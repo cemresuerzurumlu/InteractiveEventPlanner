@@ -40,9 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderEvent(event) {
     const li = document.createElement("li");
     li.innerHTML = `<h3>${event.title}</h3>
-      <p><strong>Tarih:</strong> ${event.date}</p>
-      <p><strong>Saat:</strong> ${event.time || 'Belirtilmemiş'}</p>
-      <p><strong>Yer:</strong> ${event.location || 'Belirtilmemiş'}</p>
+      <p><strong>Date:</strong> ${event.date}</p>
+      <p><strong>Time:</strong> ${event.time || 'Belirtilmemiş'}</p>
+      <p><strong>Place:</strong> ${event.location || 'Belirtilmemiş'}</p>
       <p>${event.description}</p>`;
     list.appendChild(li);
   }
