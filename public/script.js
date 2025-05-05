@@ -7,10 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const desc = document.getElementById("event-description");
   const list = document.getElementById("events");
 
-  // Sayfayı yüklerken localStorage'dan etkinlikleri getir
+  
   loadEventsFromStorage();
 
-  // Yeni etkinlik ekle
+  
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     
@@ -27,13 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
       description: desc.value
     };
 
-    // Etkinliği localStorage'a kaydet
+    
     saveEventToStorage(newEvent);
     
-    // Etkinliği ekrana yazdır
+    
     renderEvent(newEvent);
     
-    // Formu temizle
+    
     form.reset();
   });
 
@@ -48,22 +48,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   function saveEventToStorage(event) {
-    // Mevcut etkinlikleri al
+    
     let events = JSON.parse(localStorage.getItem('events') || '[]');
-    // Yeni etkinliği ekle
+    
     events.push(event);
-    // LocalStorage'a kaydet
+    
     localStorage.setItem('events', JSON.stringify(events));
   }
   
   function loadEventsFromStorage() {
-    // localStorage'dan etkinlikleri al
+    
     const events = JSON.parse(localStorage.getItem('events') || '[]');
-    // Her etkinliği ekrana yazdır
+    
     events.forEach(event => renderEvent(event));
   }
 
-  // Slider functionality
+ 
   const slides = document.querySelectorAll(".slide");
   let current = 0;
 
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     slides[current].classList.add("active");
   });
 
-  // Anlık input doğrulama (real-time validation)
+  
   title.addEventListener("input", () => {
     if (title.value.trim().length < 3) {
       title.style.border = "2px solid red";
@@ -117,5 +117,5 @@ function sendEmail() {
 
 function addToCalendar() {
   alert("Takvime ekleme özelliği yakında aktif olacak!");
-  // Buraya ileride ICS formatında dosya oluşturma fonksiyonu da ekleyebiliriz.
+  
 }
