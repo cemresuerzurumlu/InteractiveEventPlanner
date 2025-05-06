@@ -1,51 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Event Planner</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Planner - Ana Sayfa</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  body {
+  margin: 0;
+  padding-top: 40px; 
+  font-family: sans-serif;
+}
+    .top-nav {
+      background-color: #f78fb3;
+      padding: 25px 0;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .top-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    .top-nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+    .top-nav a.active {
+      text-decoration: underline;
+    }
+    .banner-row {
+  background-color: #f78fb3;
+  background-position: left center, right center;
+  background-repeat: no-repeat, no-repeat;
+  background-size: auto 80px, auto 80px;
+  padding: 20px 100px;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 45px;
+  width: 88%;
+  z-index: 1000;
+  text-align: center;
+}
+    .banner-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+      position: center;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .slideshow {
+      position: relative;
+      max-width: 100%;
+      height: 400px;
+      overflow: hidden;
+      margin: 40px 0;
+    }
+    .slideshow img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slideshow img.active {
+      opacity: 1;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .form-actions button {
+      background-color: #f78fb3;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-actions button:hover {
+      background-color: #ee6eaa;
+    }
+    #event-list {
+      margin-top: 40px;
+    }
+    .event-item {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 10px;
+      background-color: #fff0f5;
+    }
+    .event-item h4 {
+      margin: 0 0 5px 0;
+    }
+  </style>
+  <script>
+    let currentSlide = 0;
+    let slides;
+
+    window.addEventListener("DOMContentLoaded", () => {
+      slides = document.querySelectorAll(".slideshow img");
+      showSlide(currentSlide);
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }, 3000);
+
+      const form = document.getElementById("event-form");
+      const list = document.getElementById("event-list");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("event-name").value;
+        const date = document.getElementById("event-date").value;
+        const time = document.getElementById("event-time").value;
+        const location = document.getElementById("event-location").value;
+        const description = document.getElementById("event-description").value;
+
+        const eventDiv = document.createElement("div");
+        eventDiv.className = "event-item";
+        eventDiv.innerHTML = `
+          <h4>${name}</h4>
+          <p>${date} ${time}</p>
+          <p>${location}</p>
+          <p>${description}</p>
+        `;
+        list.appendChild(eventDiv);
+
+        form.reset();
+      });
+    });
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+    }
+  </script>
 </head>
 <body>
-  <header>
-    <div class="title-bubble">
-      <h1>Event Planner</h1>
-    </div>
-  </header>
+  <div class="top-nav">
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
 
-  
+  <div class="banner-row">
+    <div class="banner-title">Event Planner</div>
+  </div>
 
   <main>
     <section id="create-event">
       <h2>Create Your Event</h2>
       <form id="event-form">
-
         <div class="form-group">
           <label for="event-name">Event Name</label>
           <input type="text" id="event-name" placeholder="e.g. Birthday Party">
         </div>
-    
+
         <div class="form-group">
           <label for="event-date">Date</label>
           <input type="date" id="event-date">
         </div>
-    
+
         <div class="form-group">
           <label for="event-time">Time</label>
           <input type="time" id="event-time">
         </div>
-    
+
         <div class="form-group">
           <label for="event-location">Location</label>
           <input type="text" id="event-location" placeholder="e.g. Central Park">
         </div>
-    
+
         <div class="form-group">
           <label for="event-description">Description</label>
           <textarea id="event-description" rows="4" placeholder="Write a short event description..."></textarea>
         </div>
-    
-        
+
         <div class="form-actions">
           <button type="submit">Create Event</button>
           <button type="button" onclick="sendEmail()">Send Details via Email</button>
@@ -53,29 +221,18 @@
         </div>
       </form>
     </section>
-    
-    <section id="slideshow">
-        <h2>Event Highlights</h2>
-        <div class="slider">
-          <img src="images/slide1.jpg" class="slide active" />
-          <img src="images/slide2.jpg" class="slide" />
-          <img src="images/slide3.jpg" class="slide" />
-          <div class="controls">
-            <span id="prev">&#10094;</span>
-            <span id="next">&#10095;</span>
-          </div>
-        </div>
-      </section>
-      
+
+    <section class="slideshow">
+      <img src="images/slide1.jpg" alt="Slide 1" class="active">
+      <img src="images/slide2.jpg" alt="Slide 2">
+      <img src="images/slide3.jpg" alt="Slide 3">
+    </section>
+
     <section id="event-list">
       <h2>Upcoming Events</h2>
-      <ul id="events"></ul>
+      <!-- Event items will be inserted here -->
     </section>
-    <div class="side-decoration left"></div>
-<div class="side-decoration right"></div>
-    
   </main>
-
-  <script src="script.js"></script>
 </body>
 </html>
+

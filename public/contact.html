@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Planner</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+    .top-nav {
+      background-color: #f78fb3;
+      padding: 10px 0;
+      text-align: center;
+    }
+    .top-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    .top-nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+    .top-nav a.active {
+      text-decoration: underline;
+    }
+    .banner-row {
+      background-color: #f78fb3;
+      background-image: url("balloons-left.jpg"), url("balloons-right.jpg");
+      background-position: left center, right center;
+      background-repeat: no-repeat, no-repeat;
+      background-size: auto 80px, auto 80px;
+      padding: 40px 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .banner-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .form-actions button {
+      background-color: #f78fb3;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-actions button:hover {
+      background-color: #ee6eaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="banner-row">
+    <div class="banner-title">Event Planner</div>
+  </div>
+
+  <main>
+    <section id="contact-section">
+      <h2>Contact</h2>
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="name">Name Surname</label>
+          <input type="text" id="name" placeholder="Enter your name please">
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="example@mail.com">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your message</label>
+          <textarea id="message" rows="4" placeholder="Enter your message here..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
+

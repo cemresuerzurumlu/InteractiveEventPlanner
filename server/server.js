@@ -2,14 +2,18 @@ const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const path = require("path");
 const app = express();
 const PORT = 3000;
 
+// Middlewares
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static("public"));
 
-// GET: Etkinlikleri oku
+// Statik dosyalar (HTML, CSS, JS)
+app.use(express.static(path.join(__dirname, "../public")));
+
+// API: Etkinlikleri oku
 app.get("/api/events", (req, res) => {
   fs.readFile("server/events.json", "utf8", (err, data) => {
     if (err) return res.status(500).send("Server error");
@@ -17,7 +21,7 @@ app.get("/api/events", (req, res) => {
   });
 });
 
-// POST: Yeni etkinlik ekle
+// API: Yeni etkinlik ekle
 app.post("/api/events", (req, res) => {
   const newEvent = req.body;
 

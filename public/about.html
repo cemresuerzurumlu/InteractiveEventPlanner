@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Planner - Hakkında</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+    .top-nav {
+      background-color: #f78fb3;
+      padding: 10px 0;
+      text-align: center;
+    }
+    .top-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    .top-nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+    .top-nav a.active {
+      text-decoration: underline;
+    }
+    .banner-row {
+      background-color: #f78fb3;
+      background-image: url("balloons-left.jpg"), url("balloons-right.jpg");
+      background-position: left center, right center;
+      background-repeat: no-repeat, no-repeat;
+      background-size: auto 80px, auto 80px;
+      padding: 40px 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .banner-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    section {
+      text-align: center;
+    }
+    section h2 {
+      color: #f78fb3;
+    }
+    section p {
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="banner-row">
+    <div class="banner-title">Event Planner</div>
+  </div>
+
+  <main>
+    <section id="about-section">
+      <h2>About Us</h2>
+      <p>
+        Event Planner is a web application that allows users to create, manage, and share events.
+With its simple and user-friendly interface, you can easily plan your personal or corporate events.
+      </p>
+      <p>
+        This project was developed using HTML, CSS, JavaScript, and Bootstrap technologies, and is supported by Node.js.
+
+      </p>
+    </section>
+  </main>
+</body>
+</html>
+
